@@ -5,7 +5,17 @@ steps:
     args: ['test', 'sample-build']
   - name: 'gcr.io/cloud-builders/go'
     args: ['install', 'sample-build']
+  - name: 'alpine'
+    args: ['mkdir', 'image']
+  - name: 'alpine'
+    args: ['cp', 'bin/sample-build', 'image/']
+  - name: 'alpine'
+    args: ['cp', 'src/sample-build/Dockerfile', 'image/']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/${PROJECT_ID}/sample-build', '.']
+    dir: 'image'
 artifacts:
   objects:
     location: 'gs://${_BUCKET_NAME}/'
     paths: ['bin/sample-build']
+images: ['gcr.io/${PROJECT_ID}/sample-build']
