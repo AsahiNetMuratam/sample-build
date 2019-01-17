@@ -1,0 +1,7 @@
+steps:
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', '-b', 'master', '--single-branch', '--depth', '1', 'https://github.com/AsahiNetMuratam/sample-build.git', 'src/sample-build/']
+  - name: 'gcr.io/cloud-builders/go'
+    args: ['test', 'sample-build']
+  - name: 'gcr.io/cloud-builders/go'
+    args: ['install', 'sample-build']
