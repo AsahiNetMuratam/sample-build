@@ -5,3 +5,7 @@ steps:
     args: ['test', 'sample-build']
   - name: 'gcr.io/cloud-builders/go'
     args: ['install', 'sample-build']
+artifacts:
+  objects:
+    location: 'gs://${_BUCKET_NAME}/'
+    paths: ['bin/sample-build']
