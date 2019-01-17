@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+func Message() string {
+	return "sample"
+}
 
 func main() {
-	fmt.Println("sample")
+	fmt.Println(Message())
 }
